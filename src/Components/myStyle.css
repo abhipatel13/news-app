@@ -1,0 +1,11 @@
+.nav-item a{
+    color: white;
+}.nav-item a:hover{
+    color:black;
+}
+.nav-item a:active{
+    color:black;
+}
+.navbar-brand{
+    color: white;
+}
