@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import Newsitem from './Newsitem';
 import Spinner from './Spinner';
 import PropTypes from 'prop-types';
+import ReactDOM from 'react-dom';
 
 
 export default class News extends Component {
 
-    articles = []
+    // const [articles, setArticles] = useState();
+    articles = [];
 
     static propTypes ={
         page : 1,
@@ -92,9 +94,9 @@ export default class News extends Component {
                 <div className='row'>
                     {!this.state.loading && this.state.articles.map((element) => {
 
-                        return <div className='col-md-4' key={element.url}>
+                        return(<div className='col-md-4' key={element.url}>
                             <Newsitem title={element.title ? element.title.slice(0, 45) : "" + "..."} description={element.description ? element.description.slice(0, 85) : "" + "..."} imageUrl={element.urlToImage} newsUrl={element.url} time={element.publishedAt} author={element.author}/>
-                        </div>
+                        </div>)
                     })}
 
                     {/* <div className='col-md-4'>

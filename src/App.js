@@ -6,7 +6,7 @@ import Navbar from './Components/Navbar';
 import News from './Components/News';
 import Footer from './Components/Footer';
 import * as React from "react";
-import { Routes, Route, Outlet, Link, Router, BrowserRouter } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import About from './Components/About';
 
 
@@ -20,7 +20,7 @@ function App() {
   }
   return (
     <div className="App" style={myAppStyle}>
-    <BrowserRouter>
+    <Router>
      <Navbar/>
       <Routes>
         {/* <Route path="/" element={<News category="general" />}/> */}
@@ -32,8 +32,9 @@ function App() {
         <Route exact path="/sports" element={<News category="Sports" key="Sports"/>}/>
         <Route exact path="/technology" element={<News category="Technology" key="Technology"/>}/>
       </Routes>
-      </BrowserRouter>
       <Footer/>
+      </Router>
+      
     </div>
   );
 }
