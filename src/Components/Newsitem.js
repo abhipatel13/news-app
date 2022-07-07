@@ -1,22 +1,31 @@
-import React, { Component } from 'react';
-import './newsStyle.css'
-export default class Newsitem extends Component {
-    render() {
-
-        // let {title,description,imageUrl,newsUrl} = this.props;
+import React from 'react'
+import './newsStyle.css';
+const Newsitem = (props)=> {
+        let { title, description, imageUrl, newsUrl, author, date, source } = props;
         return (
-          <div className='container my-5'>
-              <div class="card">
-  <img src={this.props.imageUrl} class="card-img-top" alt="..." style={{height:'140px'}}/>
-  <div class="card-body">
-    <h5 class="card-title">{this.props.title}
-    </h5>
-    <p class="card-text">{this.props.description}</p>
-    <a href={this.props.newsUrl} target="_blank" className="btn btn-primary">Read More</a><br/>
-    <p class="card-text"><small class="text-muted">By {this.props.author} | Last updated {new Date(this.props.time).toGMTString()} mins ago</small></p>
-  </div>
-</div>
-          </div>
+            <div className="my-3"  style={{width:'100%'}}>
+                <div className="card">
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'flex-end',
+                        position: 'absolute',
+                        right: '0',
+                        
+                    }
+                    }> 
+                        <span className="badge rounded-pill bg-danger"> {source} </span>
+                    </div>
+                    <img src={!imageUrl ? "https://fdn.gsmarena.com/imgroot/news/21/08/xiaomi-smart-home-india-annoucnements/-476x249w4/gsmarena_00.jpg" : imageUrl} className="card-img-top" alt="..." />
+                    <div className="card-body">
+                        <h5 className="card-title">{title}  </h5>
+                        <p className="card-text">{description}</p>
+                        <p className="card-text"><small className="text-muted">By {!author ? "Unknown" : author} on  {new Date(date).toGMTString()}</small></p>
+                        <a rel="noreferrer" href={newsUrl} target="_blank" className="btn btn-sm btn-dark">Read More</a>
+                    </div>
+                </div>
+            </div>
         )
-    }
+     
 }
+
+export default Newsitem

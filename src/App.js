@@ -1,42 +1,42 @@
-// Import Section
+import './App.css';
 
-import logo from './logo.svg';
-// import './App.css';
-import Navbar from './Components/Navbar';
+// require('dotenv').config()
+import React, { useState } from 'react'
+import NavBar from './Components/Navbar';
 import News from './Components/News';
-import Footer from './Components/Footer';
-import * as React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import About from './Components/About';
+import {BrowserRouter as Router, Switch, Route, Routes} from "react-router-dom";
+// import LoadingBar from 'react-top-loading-bar'
 
-
-
-
-function App() {
-  let myAppStyle = {
-    // backgroundColor:'#c1c1c1',
-    // color:'white'
-    fontFamily:'Times'
-  }
-  return (
-    <div className="App" style={myAppStyle}>
-    <Router>
-     <Navbar/>
-      <Routes>
-        {/* <Route path="/" element={<News category="general" />}/> */}
-        <Route exact path="/" element={<News category="General" key="General"/>}/>
-        <Route exact path="/business" element={<News category="Business" key="Business"/>}/>
-        <Route exact path="/science" element={<News category="Science" key="Science"/>}/>
-        <Route exact path="/entertainment" element={<News category="Entertainment" key="Entertainment"/>}/> 
-        <Route exact path="/health" element={<News category="Health" key="Health"/>}/>
-        <Route exact path="/sports" element={<News category="Sports" key="Sports"/>}/>
-        <Route exact path="/technology" element={<News category="Technology" key="Technology"/>}/>
-      </Routes>
-      <Footer/>
-      </Router>
+const App = ()=> {
+  const pageSize = 5;
+  const apiKey = '123';
+  // console.log(apiKey);
+  const [progress, setProgress] = useState(0)
+ 
+    return (
+      <div>
+        <Router>
+        <NavBar/> 
+        {/* <LoadingBar
+        height={3}
+        color='#f11946
+        progress={progress} 
+      /> */}
+        <Routes>
+          <Route exact path="/" element={<News setProgress={setProgress} apiKey={apiKey} key="general" pageSize={pageSize} country="in" category="general"/>}/>
+          <Route exact path="/business" element={<News setProgress={setProgress} apiKey={apiKey} key="business" pageSize={pageSize} country="in" category="business"/>}/>
+          <Route exact path="/entertainment" element={<News setProgress={setProgress} apiKey={apiKey} key="entertainment" pageSize={pageSize} country="in" category="entertainment"/>}/> 
+          <Route exact path="/general" element={<News setProgress={setProgress} apiKey={apiKey} key="general" pageSize={pageSize} country="in" category="general"/>}/>
+          <Route exact path="/health" element={<News setProgress={setProgress} apiKey={apiKey} key="health" pageSize={pageSize} country="in" category="health"/>}/>
+          <Route exact path="/science" element={<News setProgress={setProgress} apiKey={apiKey} key="science" pageSize={pageSize} country="in" category="science"/>}/>
+          <Route exact path="/sports" element={<News setProgress={setProgress} apiKey={apiKey} key="sports" pageSize={pageSize} country="in" category="sports"/>}/>
+          <Route exact path="/technology" element={<News setProgress={setProgress} apiKey={apiKey} key="technology" pageSize={pageSize} country="in" category="technology"/>}/> 
+        </Routes>
+       </Router>
       
-    </div>
-  );
+        </div>
+    )
+ 
 }
 
 export default App;
